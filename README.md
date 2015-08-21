@@ -24,7 +24,7 @@ Each action has the following inputs
 | Input | Description |
 | ----- | ----- |
 | Connection String | The connection string to access the notification hub. |
-| Notification Hub Name | Name of the notification hub (e.g. `myeventhub` ) |
+| Notification Hub Name | Name of the notification hub (e.g. `mynotification` ) |
 | Message | The message to send.  Make sure you format this as needed for the type of notification (XML, JSON, etc.) |
 
 The action will return a Notification Outcome object with details of the send.
