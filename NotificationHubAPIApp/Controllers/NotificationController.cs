@@ -84,6 +84,24 @@ namespace NotificationHubAPIApp.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.BareMessage);
             }
         }
+        
+        [HttpPost]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(NotificationOutcome))]
+        [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(ConfigurationErrorsException))]
+        [Metadata("Send Message (Apple Native)")]
+        public async System.Threading.Tasks.Task<HttpResponseMessage> SendAppleNativeNotification([Metadata("Connection String")]string connectionString, [Metadata("Hub Name")]string hubName, [Metadata("JSON Payload")]string message)
+        {
+            try
+            {
+                NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connectionString, hubName);
+                var result = await hub.SendAppleNativeNotificationAsync(message);
+                return Request.CreateResponse<NotificationOutcome>(HttpStatusCode.OK, result);
+            }
+            catch (ConfigurationErrorsException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.BareMessage);
+            }
+        }
 
       
     }
