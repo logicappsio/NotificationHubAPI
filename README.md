@@ -6,7 +6,7 @@ Click the "Deploy to Azure" button above.  You can create new resources or refer
  * Resource Group (optional)
  * Service Plan (if you don't reference exisiting one)
  * Gateway (if you don't reference existing one)
- * API App (EventHubAPI)
+ * API App (NotificationHubAPI)
  * API App Host (this is the site behind the api app that this github code deploys to)
 
 ## API Documentation ##
@@ -15,6 +15,7 @@ The app has actions to send notifications via the Azure Notification Hub SDK
 * Send Message (GCM)
 * Send Message (MPNS)
 * Send Message (Windows Native)
+* Send RAW Message (Windows Native)
 * Send Message (Apple Native)
 * Send Message (Baidu Native)
 
@@ -26,5 +27,6 @@ Each action has the following inputs
 | Connection String | The connection string to access the notification hub. |
 | Notification Hub Name | Name of the notification hub (e.g. `mynotification` ) |
 | Message | The message to send.  Make sure you format this as needed for the type of notification (XML, JSON, etc.) |
+| Tags | The tags the message is send to. Comma seperated tags. |
 
 The action will return a Notification Outcome object with details of the send.
